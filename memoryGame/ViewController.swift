@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         flipCount = 0
         game.cards.removeAll()
         emoji.removeAll()
-        game = MemoryGame(numberOfPairsOfCards: buttonArray.count)
+        game = MemoryGame(numberOfPairsOfCards: (buttonArray.count + 1) / 2)
         updateViewFromModel()
     }
    

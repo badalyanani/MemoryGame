@@ -12,27 +12,27 @@ class MemoryGame {
     
     var cards = Array<Card>()
     
-    var indexOfOnleyOneCard: Int?
+    var indexOfOneCard: Int?
     
     func chooseCard(at index: Int){
         
         if !cards[index].isMatched {
             
-            if  let match = indexOfOnleyOneCard {
+            if  let match = indexOfOneCard {
                 if(match != index) {
                     if cards[match].indentifier == cards[index].indentifier {
                         cards[index].isMatched = true
                         cards[match].isMatched = true
                     }
                     cards[index].isfaceUp = true
-                    indexOfOnleyOneCard = nil
+                    indexOfOneCard = nil
                 }
             }else {
                 for i in cards.indices{
                     cards[i].isfaceUp = false
                 }
                 cards[index].isfaceUp = true
-                indexOfOnleyOneCard = index
+                indexOfOneCard = index
             }
         }
     }
@@ -44,6 +44,6 @@ class MemoryGame {
             cards.append(card)
             cards.append(card)
     }
-        //TODO: shuffle card
+        cards.shuffle()
     }
 }
