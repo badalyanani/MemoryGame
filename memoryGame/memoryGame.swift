@@ -8,21 +8,23 @@
 
 import Foundation
 
-class MemoryGame {
+struct  MemoryGame {
     
-    var cards = Array<Card>()
+    var cards = [Card]()
     
-    var indexOfOneCard: Int?
+    private var indexOfOneCard: Int?
     
-    func chooseCard(at index: Int){
+    mutating func chooseCard(at index: Int){
         
         if !cards[index].isMatched {
-            
+           
             if  let match = indexOfOneCard {
+                
                 if(match != index) {
-                    if cards[match].indentifier == cards[index].indentifier {
+                    if cards[match] == cards[index] {
                         cards[index].isMatched = true
                         cards[match].isMatched = true
+                        
                     }
                     cards[index].isfaceUp = true
                     indexOfOneCard = nil
@@ -30,7 +32,9 @@ class MemoryGame {
             }else {
                 for i in cards.indices{
                     cards[i].isfaceUp = false
+                   
                 }
+               
                 cards[index].isfaceUp = true
                 indexOfOneCard = index
             }
